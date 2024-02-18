@@ -1,33 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&family=Stalinist+One&display=swap");
+:root {
+	--table-size: 3;
+}
+[data-size="4"] {
+	--table-size: 4;
+}
+[data-size="5"] {
+	--table-size: 5;
+}
 .App {
-	text-align: center;
+	color: #f2fedc;
+	font-size: 30px;
+	font-family: "Rubik Doodle Shadow", system-ui;
+	text-shadow: 2px 1px 4px #8e9568;
+	width: 100vw;
+	height: 100vh;
+	background-image: linear-gradient(
+		to right bottom,
+		#b1c25e,
+		#70b06c,
+		#38987a,
+		#127e7d,
+		#206371,
+		#2f4858
+	);
+	box-sizing: border-box;
 }
-.App-logo {
-	height: 40vmin;
-	pointer-events: none;
-}
-@media (prefers-reduced-motion: no-preference) {
-	.App-logo {
-		animation: App-logo-spin infinite 20s linear;
-	}
-}
-.App-header {
-	background-color: #282c34;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
-	color: white;
-}
-.App-link {
-	color: #61dafb;
-}
-@keyframes App-logo-spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
+* {
+	box-sizing: border-box;
 }
