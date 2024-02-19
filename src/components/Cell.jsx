@@ -11,7 +11,7 @@ import circle3 from '../images/circle3.svg';
 import circle4 from '../images/circle4.svg';
 import styles from './tictactoe.module.css';
 
-export const Cell = () => {
+export const Cell = ({value, clickHandler}) => {
 	const images = [
 		cell1, cell2, cell3
 	];
@@ -27,11 +27,14 @@ export const Cell = () => {
 		circle3,
 		circle4,
 	];
+	const setValue = () => {
+		return value ? value : '';
+	};
 	return (
-		<div className={styles.cell}>
+		<div className={styles.cell} onClick={clickHandler} data-value={setValue()}>
 			<img className={styles.square} src={images[Math.floor(Math.random() * 3)]} alt="клетка"/>
-			<img className={styles.cross} src={crosses[Math.floor(Math.random() * 4)]} alt="клетка"/>
-			<img className={styles.circle} src={circles[Math.floor(Math.random() * 4)]} alt="клетка"/>
+			<img className={styles.cross} src={crosses[Math.floor(Math.random() * 4)]} alt="крестик"/>
+			<img className={styles.circle} src={circles[Math.floor(Math.random() * 4)]} alt="нолик"/>
 		</div>
 	);
 };

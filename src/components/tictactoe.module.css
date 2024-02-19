@@ -14,6 +14,10 @@
 	grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
 	gap: 2px;
 }
+.table[data-move="o"] .cell:hover[data-value=""] .circle,
+.table[data-move="x"] .cell:hover[data-value=""] .cross {
+	opacity: 0.5;
+}
 .cell {
 	position: relative;
 	max-width: 72px;
@@ -24,11 +28,11 @@
 .square {
 	filter: drop-shadow(0px 0px 2px #abad9a);
 }
-/* .cell:hover .circle {
+.cell[data-value="o"] .circle {
 	opacity: 1;
 	filter: drop-shadow(2px 2px 5px #007664);
-} */
-.cell:hover .cross {
+}
+.cell[data-value="x"] .cross {
 	opacity: 1;
 	filter: drop-shadow(2px 2px 4px #46391c63);
 }
