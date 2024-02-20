@@ -1,7 +1,9 @@
-import styles from './tictactoe.module.css';
-import { dataInit } from './TicTacToe';
+import { Cell } from './Cell';
 
-export const InfoPanel = ({ updateField, size, onSetSize, winCon, onSetWinCondition }) => {
+import styles from './tictactoe.module.css';
+import { dataInit } from '../utilities/utilities';
+
+export const InfoPanel = ({updateField, size, onSetSize, winCon, onSetWinCondition, shape, winState }) => {
 
 	const calcSize = (newValue) => {
 		if (newValue <= 3) {
@@ -37,6 +39,14 @@ export const InfoPanel = ({ updateField, size, onSetSize, winCon, onSetWinCondit
 					<button className={styles.down} aria-label="меньше"  onClick={() => onSetWinCondition(calcSize(winCon - 1))}>
 					</button>
 				</div>
+			</div>
+			<div className={styles.block}>
+				<label> Сейчас ходят:</label>
+				<Cell cellData={{value: shape, crossIndex: 1, circleIndex: 1, cellIndex: null}} clickHandler={undefined}></Cell>
+			</div>
+			<div className={styles.block + ' ' + (!winState ? styles.hide : '')}>
+				<label>Победа:</label>
+				<Cell cellData={{value: shape, crossIndex: 1, circleIndex: 1, cellIndex: null}} clickHandler={undefined}></Cell>
 			</div>
 		</div>
   );
