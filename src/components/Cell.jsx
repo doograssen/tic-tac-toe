@@ -27,7 +27,6 @@ export const Cell = ({cellData, clickHandler}) => {
 		circle3,
 		circle4,
 	];
-	console.log('refresh');
 	const setValue = () => {
 		return cellData.value ? cellData.value : '';
 	};

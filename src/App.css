@@ -1,12 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&family=Stalinist+One&display=swap");
 :root {
 	--table-size: 3;
+	--cell-size: 72px;
 }
 [data-size="4"] {
 	--table-size: 4;
 }
 [data-size="5"] {
 	--table-size: 5;
+}
+[data-size="6"] {
+	--table-size: 6;
+}
+[data-size="7"] {
+	--table-size: 7;
+	--cell-size: 65px;
+}
+[data-size="8"] {
+	--table-size: 8;
+	--cell-size: 65px;
+}
+[data-size="9"] {
+	--table-size: 9;
+	--cell-size: 55px;
+}
+[data-size="10"] {
+	--table-size: 10;
+	--cell-size: 55px;
 }
 .App {
 	color: #f2fedc;

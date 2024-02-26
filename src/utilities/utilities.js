@@ -19,11 +19,10 @@ export const checkWin = (cellX, cellY, tableData, shape, winCon) => {
 	if (tableData[cellX][cellY].value === false)
 		tableData[cellX][cellY].value = shape;
 	let result = null;
-	result = result || checkLine(cellX, cellY, 1, 0); //horizontal
-	result = result || checkLine(cellX, cellY, 0, 1); //vertical
-	result = result || checkLine(cellX, cellY, 1, 1); //diagonal 45
-	result = result || checkLine(cellX, cellY, 1, -1); //diagonal 135
-
+	result = result || checkLine(cellX, cellY, 1, 0); 
+	result = result || checkLine(cellX, cellY, 0, 1); 
+	result = result || checkLine(cellX, cellY, 1, 1); 
+	result = result || checkLine(cellX, cellY, 1, -1);
 	return result;
 
 	function getShape(x, y) {
@@ -47,3 +46,15 @@ export const checkWin = (cellX, cellY, tableData, shape, winCon) => {
 		return false;
 	}
 };
+
+export const checkDraw = (cellX, cellY, tableData, shape) => {
+	tableData[cellX][cellY].value = shape;
+	let i = 0;
+	let rowFilled = false;
+	do {
+		rowFilled = !(tableData[i].find(({value}) => !value));
+		console.log([i, rowFilled]);
+		i++;
+	} while (rowFilled && i < tableData.length);
+	return rowFilled;
+}
