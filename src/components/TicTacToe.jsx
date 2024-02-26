@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Table } from './Table'
+import { Table } from './Table';
+import { Reset } from './Reset';
 import { InfoPanel } from './InfoPanel';
 import styles from './tictactoe.module.css';
 import { dataInit } from '../utilities/utilities';
@@ -13,10 +14,18 @@ export const TicTacToe = () => {
 	const data = dataInit(size);
 	const [gameData, setGameData] = useState(data);
 	const [winState, setWinState] = useState(false);
-	const [drawState, setDrawState] = useState(false);	
+	const [drawState, setDrawState] = useState(false);
 	const [gameStartState, setGameStartState] = useState(false);
+	const resetHandler = () => {
+		setWinState(false);
+		setDrawState(false);
+		setGameStartState(false);
+		setGameData(dataInit(size));
+	};
+
 	return (
 		<div className={styles.game}>
+			<Reset reset={resetHandler}/>
 			<InfoPanel
 				updateField={setGameData}
 				size={size}
@@ -26,7 +35,7 @@ export const TicTacToe = () => {
 				shape={shape}
 				winState={winState}
 				setWinState={setWinState}
-				drawState={drawState}	
+				drawState={drawState}
 				setDrawState={setDrawState}
 				gameStart={gameStartState} />
 			<Table

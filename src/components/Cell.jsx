@@ -10,6 +10,7 @@ import circle2 from '../images/circle2.svg';
 import circle3 from '../images/circle3.svg';
 import circle4 from '../images/circle4.svg';
 import styles from './tictactoe.module.css';
+import PropTypes from 'prop-types';
 
 export const Cell = ({cellData, clickHandler}) => {
 	const images = [
@@ -37,4 +38,9 @@ export const Cell = ({cellData, clickHandler}) => {
 			<img className={styles.circle} src={circles[cellData.circleIndex]} alt="нолик"/>
 		</div>
 	);
+};
+
+Cell.propTypes = {
+	cellData: PropTypes.object,
+	clickHandler: PropTypes.func,
 };

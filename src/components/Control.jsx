@@ -1,8 +1,9 @@
 import styles from './tictactoe.module.css';
+import PropTypes from 'prop-types';
 
-export const Controll = ({ title, value, handler, gameStart}) => {
+export const Control = ({ title, value, handler, gameStart}) => {
   return (
-    <div className={styles.block}>
+    <div className={styles.block + ' ' + styles.control}>
       <label>{title}</label>
       <span className={styles.value}>{value}</span>
       <div className={styles.counter + ' ' + (gameStart ? styles.hide : '')}>
@@ -14,3 +15,10 @@ export const Controll = ({ title, value, handler, gameStart}) => {
     </div>
   );
 }
+
+Control.propTypes = {
+	title: PropTypes.string,
+	value: PropTypes.number,
+	handler: PropTypes.func,
+	gameStart: PropTypes.bool,
+};

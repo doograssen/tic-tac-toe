@@ -1,7 +1,8 @@
 import { Cell } from './Cell';
-import { Controll } from "./Controll";
+import { Control } from "./Control";
 import styles from './tictactoe.module.css';
 import { dataInit } from '../utilities/utilities';
+import PropTypes from 'prop-types';
 
 export const InfoPanel = ({updateField, size, onSetSize, winCon, onSetWinCondition, shape, winState, setWinState, drawState, setDrawState, gameStart }) => {
 	const MAX_TABLE_SIZE = 10;
@@ -17,10 +18,12 @@ export const InfoPanel = ({updateField, size, onSetSize, winCon, onSetWinConditi
 		return newValue;
 	};
 	const clickSizeHandler = (increment) => {
-		onSetSize(calcSize(size + increment, MAX_TABLE_SIZE, winCon));
-		updateField(dataInit(calcSize(size + increment, MAX_TABLE_SIZE, winCon)));
+		const newSize = calcSize(size + increment, MAX_TABLE_SIZE, winCon);
+		if (newSize === size) return false;
+		onSetSize(newSize);
+		updateField(dataInit(newSize));
 		if (winState) {
-			setWinState(false);		
+			setWinState(false);
 		}
 		if (drawState) {
 			setDrawState(false);
@@ -37,21 +40,35 @@ export const InfoPanel = ({updateField, size, onSetSize, winCon, onSetWinConditi
 	};
   return (
 		<div className={styles.panel}>
-			<Controll title="Сторона поля" value={size} handler={clickSizeHandler} gameStart={gameStart}/>
-			<Controll title="Условие победы:" value={winCon} handler={clickWinconHandler} gameStart={gameStart}/>
+			<Control title="Сторона поля" value={size} handler={clickSizeHandler} gameStart={gameStart}/>
+			<Control title="Условие победы:" value={winCon} handler={clickWinconHandler} gameStart={gameStart}/>
 			<div className={styles.block}>
 				<label> Сейчас ходят:</label>
 				<Cell cellData={{value: shape, crossIndex: 1, circleIndex: 1, cellIndex: null}} clickHandler={undefined}></Cell>
 			</div>
-			{ winState && 
+			{ winState &&
 					<div className={styles.block}>
 						<label>Победа:</label>
 						<Cell cellData={{value: shape, crossIndex: 1, circleIndex: 1, cellIndex: null}} clickHandler={undefined}></Cell>
 					</div>}
-			{ drawState && 				
+			{ drawState &&
 					<div className={styles.block + ' ' + (!drawState ? styles.hide : '')}>
-						<label>Ничья!!!</label>				
+						<label>Ничья!!!</label>
 					</div>}
 		</div>
   );
+};
+
+InfoPanel.propTypes = {
+	updateField: PropTypes.func,
+	size: PropTypes.number,
+	onSetSize: PropTypes.func,
+	winCon: PropTypes.number,
+	onSetWinCondition: PropTypes.func,
+	shape: PropTypes.string,
+	winState: PropTypes.bool,
+	setWinState: PropTypes.func,
+	drawState: PropTypes.bool,
+	setDrawState: PropTypes.func,
+	gameStart: PropTypes.bool,
 };
