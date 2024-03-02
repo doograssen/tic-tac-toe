@@ -9,6 +9,7 @@ export const Table = ({data, update, shape, setShape, winCon, winState, setWinSt
 			if (!gameStart && !winState) {
 				setGameStart(true);
 			}
+			if (data[x][y].value) return false;
 			if (!data[x][y].value) {
 				update((data) => {
 					data[x][y].value = shape;

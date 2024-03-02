@@ -19,9 +19,9 @@ export const checkWin = (cellX, cellY, tableData, shape, winCon) => {
 	if (tableData[cellX][cellY].value === false)
 		tableData[cellX][cellY].value = shape;
 	let result = null;
-	result = result || checkLine(cellX, cellY, 1, 0); 
-	result = result || checkLine(cellX, cellY, 0, 1); 
-	result = result || checkLine(cellX, cellY, 1, 1); 
+	result = result || checkLine(cellX, cellY, 1, 0);
+	result = result || checkLine(cellX, cellY, 0, 1);
+	result = result || checkLine(cellX, cellY, 1, 1);
 	result = result || checkLine(cellX, cellY, 1, -1);
 	return result;
 
@@ -52,9 +52,8 @@ export const checkDraw = (cellX, cellY, tableData, shape) => {
 	let i = 0;
 	let rowFilled = false;
 	do {
-		rowFilled = !(tableData[i].find(({value}) => !value));
-		console.log([i, rowFilled]);
+		rowFilled = !tableData[i].find(({ value }) => !value);
 		i++;
 	} while (rowFilled && i < tableData.length);
 	return rowFilled;
-}
+};
