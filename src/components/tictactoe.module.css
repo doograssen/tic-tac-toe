@@ -59,11 +59,11 @@
 }
 .cell[data-value="o"] .circle {
 	opacity: 1;
-	filter: drop-shadow(2px 2px 5px #007664);
+	filter: drop-shadow(-2px 2px 5px #007664);
 }
 .cell[data-value="x"] .cross {
 	opacity: 1;
-	filter: drop-shadow(2px 2px 4px #46391c63);
+	filter: drop-shadow(-2px 2px 4px #46391c63);
 }
 .cross,
 .circle {

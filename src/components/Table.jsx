@@ -18,7 +18,7 @@ export const Table = ({data, update, shape, setShape, winCon, winState, setWinSt
 			}
 			let isDraw = checkDraw(x, y, data, shape);
 			let isWin = checkWin(x, y, data, shape, winCon);
-			setDrawState(isDraw);
+			setDrawState(isDraw && !isWin);
 			setWinState(isWin);
 			if (gameStart && isWin || isDraw) {
 				setGameStart(false);

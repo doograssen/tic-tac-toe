@@ -32,10 +32,10 @@ export const Cell = ({cellData, clickHandler}) => {
 		return cellData.value ? cellData.value : '';
 	};
 	return (
-		<div className={styles.cell} onClick={clickHandler} data-value={setValue()}>
-			<img className={styles.square + ' ' + (cellData.cellIndex !== null ? '' : styles.hide)} src={images[cellData.cellIndex]} alt="клетка"/>
-			<img className={styles.cross} src={crosses[cellData.crossIndex]} alt="крестик"/>
-			<img className={styles.circle} src={circles[cellData.circleIndex]} alt="нолик"/>
+		<div className={styles.cell} onMouseDownCapture={clickHandler} data-value={setValue()}>
+			<img className={styles.square + ' ' + (cellData.cellIndex !== null ? '' : styles.hide)} src={images[cellData.cellIndex]} alt="клетка" draggable="false"/>
+			<img className={styles.cross} src={crosses[cellData.crossIndex]} alt="крестик" draggable="false"/>
+			<img className={styles.circle} src={circles[cellData.circleIndex]} alt="нолик" draggable="false"/>
 		</div>
 	);
 };
